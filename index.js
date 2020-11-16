@@ -1,10 +1,12 @@
-var express = require('express');
-var app = express();
-var port = 5000;
+const express = require('express');
+const app = express();
+const apiRoutes = require('./routes');
+const cors = require('cors')
+const port = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+app.use(express.json());
+app.use(cors())
+app.use(apiRoutes);
 
 app.listen(port, () => {
   console.log('Listening....');
