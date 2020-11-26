@@ -4,7 +4,6 @@
 //               connectionLimit: 10,
 //               user:'root',
 //               password: 'root',
-//               database: 'serviceseeking_development',
 //               port: 3306
 //             })
 

@@ -21,7 +21,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText'
-import StarIcon from '@material-ui/icons/Star';
+import LockIcon from '@material-ui/icons/Lock';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = (theme) => ({
   root: {
@@ -30,6 +32,9 @@ const useStyles = (theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  list: {
+    width: 250
+  }
 });
 
 class App extends React.Component {
@@ -58,26 +63,29 @@ class App extends React.Component {
           </Toolbar>
         </AppBar>
         <Drawer anchor='left' open={this.state.drawer} onClose={() => this.toggleDrawer()}>
+          <div className={classes.list}>
           <List>
             <ListItem button component={Link} to="/" onClick={() => this.toggleDrawer()}>
               <ListItemIcon>
-                <StarIcon/>
+                <HomeIcon/>
               </ListItemIcon>
               <ListItemText>Home</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/register" onClick={() => this.toggleDrawer()}>
               <ListItemIcon>
-                <StarIcon/>
+                <PersonAddIcon/>
               </ListItemIcon>
               <ListItemText>Register</ListItemText>
             </ListItem>
             <ListItem button component={Link} to="/accounts/login" onClick={() => this.toggleDrawer()}>
               <ListItemIcon>
-                <StarIcon/>
+                <LockIcon/>
               </ListItemIcon>
               <ListItemText>Login</ListItemText>
             </ListItem>
+            <Divider />
           </List>
+          </div>
         </Drawer>
         <Switch>
           <Route exact path="/">

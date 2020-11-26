@@ -18,13 +18,13 @@ class Home extends Component {
   fetchTech() {
     fetch('http://localhost:5000/')
     .then(response => response.json())
-    .then(data => this.setState({accounts: data.rows}))
+    .then(data => this.setState({accounts: data}))
   }
 
   handleTransaction() {
     let user = {
       user_id: this.state.user_id, 
-      balance: (this.state.accounts.filter((user) => user.user_id === parseInt(this.state.user_id))[0].balance + parseFloat(this.state.amount)) 
+      balance: 0//(this.state.accounts.filter((user) => user.user_id === parseInt(this.state.user_id))[0].balance + parseFloat(this.state.amount)) 
     }
      //console.log(this.state.accounts[i].balance)
      //console.log((parseFloat(this.state.accounts[i].balance) + parseFloat(this.state.amount)) ) 
@@ -61,7 +61,7 @@ class Home extends Component {
         <div className="container">
           <ul>
             {this.state.accounts.map((account,index)=>{
-              return <li key={index}>id: {account.user_id} NAME: {account.username}<br/> Balance: {account.balance}</li>
+              return <li key={index}>id: {account._id} NAME: {account.username}<br/> Balance: {parseFloat(account.balance.$numberDecimal)}</li>
             })}
           </ul>
           <input type="text" name="user_id" value={this.state.user_id} onChange={(event) => this.handleUser(event)} />
